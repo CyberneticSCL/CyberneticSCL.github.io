@@ -1,0 +1,276 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148027065-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148027065-1');
+</script>
+	<title>PIETOOLS - A MATLAB Toolbox for Constructing and Solving LPIs</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="MSHTML 6.00.6000.16674" name=GENERATOR>
+<style type="text/css">
+body,td,th {
+    color: #552223;
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+}
+	  h2 {
+    color: #060878;
+  }
+	  h3 {
+    color: #104301;
+  }
+	  h4 {
+    color: #8F0306;
+  }
+	a:link {
+    color: #000000;
+}
+a:visited {
+    color: #000000;
+}
+a:hover {
+    color: #000000;
+}
+a:active {
+    color: #000000;
+}
+.nnn {
+    background-color: #C36B6D;
+}
+body {
+    background-color: #FAF3E3;
+}
+</style>
+</head>
+<!--
+	<body bgColor=#FAF3E3 text=#552223 link=#00ff00 vLink=#FEA200 alink="#80340A">
+	<header class="nnn">Content for New header Tag Goes Here</header>
+
+<p align=center>blah</p>
+-->
+<P align=center> (Page Last updated July 2, 2020) </P>
+<P align=center>
+	<IMG height=150 alt=PIETOOLS src="../PIETOOLS_logo_3_tb.png" ></P>
+<P>&nbsp;</P>
+<H4>Latest Release: PIETOOLS 2020a (July 2, 2020): 
+         <a href="http://control.asu.edu/pietools/PIETOOLS_2020a.zip">PIETOOLS_2020a.zip</a> </H4>
+<H4>COMING SOON: PIETOOLS 2021a </H4>
+<UL>
+  <LI>Release Date: June 2, 2021
+</UL>
+
+	
+	<H4>We recommend using the installation script: <a href="http://control.asu.edu/pietools/pietools_install_2020a.m">pietools_install.m</a> </H4>
+<UL>
+  <LI>Downloads and Installs: PIETOOLS 2020a; sedumi; SOSTOOLS v3.03
+	  </UL>
+	<H2>Introduction</H2>
+<P>PIETOOLS is a free MATLAB toolbox for formulating 
+and solving <em>Linear PI Inequalities (LPIs)</em> programs. PIETOOLS can 
+be used to define 3-PI or 4-PI operators, declare 3-PI or 4-PI operators variables (postive semidefinite or indefinite), add operator inequality constraints, and solve LPI optimization problems. The interface is inspired by YALMIP and the program structure is based on that used by SOSTOOLS. By default the LPIs are solved using <A href="http://sedumi.ie.lehigh.edu/">SeDuMi</A>.
+	
+<h4>Watch our short (14min): 
+	<a href="https://youtu.be/DJxWpjfkMQY">Introduction to PIETOOLS Youtube Video</a>
+</h4>
+
+			 <h4>Read the Guide: 
+				 <a href="PIETOOLS_2020a_How_to_get_started.pdf">How to Get Started with PIETOOLS</a>
+ </h4>
+
+	
+<h3>What is a PIE?</h3>
+	<p>PIE stands for Partial Integral Equation and is an alternative representation for many commonly encountered classes of systems, including Ordinary Differential Equations (ODEs), Partial-Differential Equations (PDEs), Delay Differential Equations (DDEs), and Differential-Difference Equations (DDFs).</p>
+	
+	
+	<p>The cool thing about PIEs is that, unlike PDEs and DDEs (which have lame boundary conditions, unbounded operators, and continuity constraints), PIEs are defined by the very slick linear algebra of 3/4 PI operators. This feature makes PIEs the representation of choice if you want to do anything computational with your beam equation, network model, reaction-diffusion equations, et c.</p>
+	
+	<p>Now, you may be wondering if you are going to lose anything by switching your PDE/DDE/DDF to a PIE. No! That would be awful. You may have been hurt in the past by people wrecking your lovely PDE/DDE/DDF using such barbaric tools as approximation via discretization, projection, mollification, regularization or Pade. However, let us assure you that using PIEs is completely safe. The PIE representation of a PDE/DDE/DDF is exact. The solutions are one-to-one, only the tools used for representation have improved. </p>
+
+	
+	<H3>What can I do with PIETOOLS?</H3>
+	The use of PIETOOLS is organized into 4 categories. These are:
+<OL>
+  <LI>Manipulation of 3-PI and 4-PI operators.
+  <LI>Constructing and Solving Linear PI Inequalities (LPIs).
+  <LI>Converting PDEs/DDEs/DDFs to PIEs.
+  <LI>Solving LPIs for Analysis and Control of PIEs.
+  <LI>Numerically simulate a PIE (coming soon).
+</OL>
+	  	<H3>1. Manipulation of 3/4-PI operators</H3>
+The opvar class allows you to define and examine 3-PI and 4-PI operators. Most Matlab operations which are valid for matrices are also valid for 3/4-PI operators.
+<UL>
+  <LI>Composition/Multiplication (T1*T2).
+  <LI>Addition/Substraction (T1+T2 or T1-T2).
+  <LI>Concatentation/Matrices of operators ([T1 T2] or [T1;T2]).
+  <LI>Scalar Multiplication (a*T).
+  <LI>Inversion of 3/4-PI operators.
+</UL>
+	  
+	  	<H3>2. Construct and Solve LPIs</H3>
+Inspired by the YALMIP syntax for constructing and solving LMIs, PIETOOLS allows the user to declare and then manipulate 3/4-PI decision variables as they would any other 3/4-PI object. The user may also add equality and inequality constraints on these 3/4-PI objects, where positivity is defined with respect to the L2 inner product. Construction of almost any LPI can be accomplished using a combination of the following four commands:
+<UL>
+  <LI>Declare a 3/4-PI variable (T1=lpivar).
+  <LI>Declare a positive semidefinite 3/4-PI variable (T2=poslpivar).
+  <LI>Declare and equality constraints (T1=T2 -> opeq(T1-T2)).
+  <LI>Declare an inequality constraints (T1>T2 -> opineq(T1-T2)).
+</UL>
+	  
+	  	<H3>3. Converting PDEs/DDEs/DDFs to PIEs</H3>
+PIETOOLS currently includes 3 user-friendly scripts for converting a very broad class of PDEs/DDEs/DDFs to PIEs. The header to each script describes the input format for each application, using as nearly universal a formulation as possible. The 3 scripts are:
+<UL>
+  <LI>Convert a PDE (in 1 spatial variable) to a PIE (convert_PIETOOLS_PDE).
+  <LI>Convert a DDE to a PIE (convert_PIETOOLS_DDE).
+  <LI>Convert a DDF to a PIE (convert_PIETOOLS_DDF).
+</UL>
+	  	<H3>4. Scripts for Analysis and Control of PIEs</H3>
+	  
+	The list of LPIs for analysis and control of PIEs is constantly expanding. However, PIETOOLS comes with several pre-defined scripts for performing basic functions in analysis and control of PIEs. Examples of these scripts include:
+<UL>
+  <LI>Analyze stability of a PIE (executive_PIETOOLS_stability).
+  <LI>Compute the H_inf system norm of a PIE (executive_PIETOOLS_Hinf_gain).
+  <LI>Design an optimal observer/state-estimator for a PIE (executive_PIETOOLS_Hinf_estimator).
+  <LI>Design an optimal state-feedback controller for a PIE (executive_PIETOOLS_Hinf_control).
+</UL>
+
+	  	  	<H3>For a Complete List of Files Included with PIETOOLS, see our: <a href="../2021a/Readme.m">Readme.m File</a></H3>
+
+	  
+	  </P>
+<br> 
+ 
+
+<!--<P>&nbsp;</P>-->
+
+<HR>
+
+<H2>System requirements</H2>
+<P>To install and run PIETOOLS, you need:</P>
+<UL>
+  <LI> <A href="http://www.mathworks.com/">MATLAB</A> version 6.0 or later. 
+  <LI> The current version of the MATLAB Symbolic Math Toolbox. This is installed in most default versions of Matlab.</LI> 
+  <LI> An SDP solver. Sedumi is included in the installation script and can be obtained from: <A 
+  href="http://sedumi.ie.lehigh.edu/">SeDuMi</A> </LI></UL>
+<HR>
+
+<H2>Authors</H2>
+<P>The software has been written and is maintained by:</P>
+<UL>
+  <LI>Sachin Shivakumar 
+  <LI><A href="http://control.asu.edu">Matthew M. Peet</A> 
+  <LI>Amritam Das 
+</UL>
+<A name=references>
+
+<HR>
+
+
+<H2>References</H2>
+<P>A guide to PIETOOLS 2020a can be found at:</P>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->			
+
+<p><font size="2" face="helvetica,sans-serif" class="style17">
+	 S. Shivakumar and A. Das and M. Peet
+	  </font><br>
+	  <span class="style18"><font face="helvetica,sans-serif" size="3">
+		  <a href="../../Publications/2020/Shivakumar_ACC_2020.pdf" target="_top">
+			 PIETOOLS: A Matlab Toolbox for Manipulation and Optimization of Partial Integral Operators
+		  </a></font></span><br><font size="2" face="helvetica,sans-serif">
+	  American Control Conference, 2020.
+	  </font><br>
+        <font size="2" face="helvetica,sans-serif" color="#cccc99">
+				<a href="https://arxiv.org/abs/1910.01338" target="_top">[arXiv:1910.01338]</a>
+			</font><font face="Arial, Helvetica, sans-serif" size="2"> 
+			<a href="../../Publications/2020/Shivakumar_ACC_2020.pdf" target="_top">[.pdf]</a></font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[slides]</font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[CodeOcean]</font>
+	</p>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->	
+	
+<P>Introduction to the fundamentals of PIEs, equivalence to PDEs, and an LPI for stability analysis can be found at:</P>	
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->	
+
+	<p><span class="style17"><font size="2" face="helvetica,sans-serif">M. M. Peet<font color="#cccc99"><br>
+    </font><span class="style18"><font size="3"><a href="../../Publications/2020/Peet_AUT_2020b.pdf"> A Partial Integral Equation Representation of Coupled
+Linear PDEs and Scalable Stability Analysis using LMIs </a></font></span><font color="#cccc99"><br>
+      </font><font face="helvetica,sans-serif" size="2"><font size="2" face="helvetica,sans-serif"><font face="helvetica,sans-serif" size="2">Not Rejected to Automatica as Regular Paper.</font></font></font><font color="#cccc99"><br>
+      </font></font></span><font size="2" face="helvetica,sans-serif"><font color="#cccc99"><font face="Arial, Helvetica, sans-serif" size="2"><a href="https://arxiv.org/abs/1812.06794" target="_top">[arXiv:1812.06794]</a> <a href="../../Publications/2020/Peet_AUT_2020b.pdf" target="_top">[.pdf]</a> [.ps] <a href="../../Publications/2018/CDC_2018_talk.pdf">[related talk]</a></font></font></font>
+		<font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			<a href="https://codeocean.com/capsule/4878163/tree">[CodeOcean]</a></font></p>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+Equivalence of PIEs, DDEs and DDFs can be found at:            
+  <p><font size="2" face="helvetica,sans-serif" class="style17">
+	 M. Peet
+	  </font><br>
+	  <span class="style18"><font face="helvetica,sans-serif" size="3">
+		  <a href="../../Publications/2020/Peet_AUT_2020.pdf" target="_top">
+			  Representation of Networks and Systems with Delay: DDEs, DDFs, ODE-PDEs and PIEs
+		  </a></font></span><br><font size="2" face="helvetica,sans-serif">
+	  Not Rejected to Automatica as Brief Paper.
+	  </font><br>
+        <font size="2" face="helvetica,sans-serif" color="#cccc99">
+			<a href="https://arxiv.org/abs/1910.03881" target="_top">[arXiv:1910.03881]</a>
+	</font><font face="Arial, Helvetica, sans-serif" size="2"> 
+			<a href="../../Publications/2020/Peet_AUT_2020.pdf" target="_top">[.pdf]</a></font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[slides]</font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[CodeOcean]</font></p>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+A duality theory for PIEs and an LPI for optimal state-feedback controller synthesis for a certain class of PIEs can be found at:            
+    <p><font size="2" face="helvetica,sans-serif" class="style17"> S. Shivakumar and A. Das and S. Weiland and M. Peet </font><br>
+      <span class="style18"><font face="helvetica,sans-serif" size="3"> <a href="../../Publications/2020/Shivakumar_CDC_2020.pdf" target="_top"> Duality and H_\infty-Optimal Control Of Coupled ODE-PDE Systems </a></font></span><br>
+      <font size="2" face="helvetica,sans-serif">Submitted to the IEEE Conference on Decision and Control, 2020. </font><br>
+      <font size="2" face="helvetica,sans-serif" color="#cccc99"> [arXiv] </font><font face="Arial, Helvetica, sans-serif" size="2"> <a href="../../Publications/2020/Shivakumar_CDC_2020.pdf" target="_top">[.pdf]</a></font> <font size="2" face="helvetica,sans-serif" color="#cccc99"> [slides]</font> <font size="2" face="helvetica,sans-serif" color="#cccc99"> [CodeOcean]</font> </p>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+An LPI for optimal observer/state-estimator synthesis for certain classes of PIEs (derived from DDEs and PDEs) can be found at:
+<p><font size="2" face="helvetica,sans-serif" class="style17"> S. Wu and M. Peet and S. Shivakumar and C. Hua </font><br>
+      <span class="style18"><font face="helvetica,sans-serif" size="3"> <a href="../../Publications/2020/Wu_CDC_2020.pdf" target="_top"> H_\infty-Optimal Observer Design for Linear Systems with Delays in States, Outputs and Disturbances </a></font></span><br>
+      <font size="2" face="helvetica,sans-serif">Submitted to the IEEE Conference on Decision and Control, 2020. </font><br>
+      <font size="2" face="helvetica,sans-serif" color="#cccc99"> [arXiv] </font><font face="Arial, Helvetica, sans-serif" size="2"> <a href="../../Publications/2020/Wu_CDC_2020.pdf" target="_top">[.pdf]</a></font> <font size="2" face="helvetica,sans-serif" color="#cccc99"> [slides]</font> <font size="2" face="helvetica,sans-serif" color="#cccc99"> [CodeOcean]</font> </p>
+and 
+  <p><font size="2" face="helvetica,sans-serif">
+	 A. Das and S. Shivakumar and S. Weiland and M. Peet
+	  </font><br>
+	  <font face="helvetica,sans-serif" size="3">
+		  <a href="../../Publications/2019/Das_CDC_2019.pdf" target="_top">
+			  H-\infty Optimal Estimation for Linear Coupled PDE Systems
+		  </a></font><br><font size="2" face="helvetica,sans-serif">
+	  IEEE Conference on Decision and Control, 2019.
+	  </font><br>
+        <font size="2" face="helvetica,sans-serif" color="#cccc99">
+			<a href="https://arxiv.org/abs/1809.10308" target="_top">[arXiv:1809.10308]</a>
+			</font><font face="Arial, Helvetica, sans-serif" size="2"> 
+			<a href="../../Publications/2019/Das_CDC_2019.pdf" target="_top">[.pdf]</a></font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[slides]</font>
+	  <font size="2" face="helvetica,sans-serif" color="#cccc99"> 
+			[CodeOcean]</font>
+	</p>	  
+	  <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->	
+	  
+</p>
+<HR>
+
+<H2>Technical Support</H2>
+
+	<P>For those of you having trouble installing PIETOOLS, converting PDEs to PIEs, or solving LPIs, we have preprared a very incomplete <a href="../PIETOOLS_troubleshooting.pdf">Troublehooting Guide</a>. This Guide addresses most of the problems which have been ecountered by our very helpful group of beta testers. </P>
+
+	<P>Our goal is to make use of PIETOOLS as simple as humanly possible. However, our background is not in coding and sometimes we come up short. If you are having a serious technical issue and neither the help commands nor the manual are helping, and believe there is a bug in the program, please report it to: <A 
+href="mailto:mpeet@asu.edu">mpeet@asu.edu</A>. If there is a bug, we will add it to the known bug list and do our best to fix it.</P>
+
+	<P>Alternatively, if you would like to volunteer for the PIETOOLS development team, we would be happy to include you (no compensation -  Sorry). Send an email to <A 
+href="mailto:mpeet@asu.edu">mpeet@asu.edu</A> </P>
+
+
+<BR><BR>
+
+</BODY></HTML> 
+

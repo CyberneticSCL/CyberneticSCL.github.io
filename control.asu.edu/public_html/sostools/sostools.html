@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0035)http://sysos.eng.ox.ac.uk/sostools/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>SOSTOOLS - A sum of squares optimization toolbox for MATLAB</title>
+
+<meta content="MSHTML 6.00.6000.16674" name="GENERATOR"></head>
+<body text="#ffffff" vlink="#ffff00" link="#00ff00" bgcolor="#04001a">
+<p align="center"><a href="http://www.cds.caltech.edu/sostools">[Caltech site]</a> 
+<a href="http://www.mit.edu/~parrilo/sostools">[MIT site]</a>
+<a href="http://www.eng.ox.ac.uk/control/sostools">[Oxford site]</a>
+<a href="http://control.asu.edu/sostools">[ASU site]</a>
+</p>
+<p align="center"> (Page Last updated 29th September 2021) </p>
+<p align="center"><img height="93" alt="SOSTOOLS" src="./SOSTOOLS - A sum of squares optimization toolbox for MATLAB_files/sostools.gif" width="506"></p>
+<p>&nbsp;</p>
+<center>
+<h1> For the latest release, please visit our  <a href="http://github.com/oxfordcontrol/SOSTOOLS">GitHub</a> page. <br>
+</h1></center>
+<br>
+<h2>Introduction</h2>
+<p>SOSTOOLS is a free MATLAB toolbox for formulating 
+and solving <em>sums of squares (SOS) optimization</em> programs. SOSTOOLS can 
+be used to specify and solve sum of squares polynomial problems using a very 
+simple, flexible, and intuitive high-level notation. The SOS programs can be solved using <a href="http://sedumi.ie.lehigh.edu/">SeDuMi</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/sdpt3.html">SDPT3</a>, <a href="https://projects.coin-or.org/Csdp/">CSDP</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/SDPNAL.html">SDPNAL</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/SDPNALplus.html">SDPNAL+</a>, <a href="https://github.com/oxfordcontrol/CDCS">CDCS</a>, <a href="http://sdpa.sourceforge.net/">SDPA</a> and <a href="https://www.mosek.com/">MOSEK</a>. All these are well-known semidefinite programming solvers, with SOSTOOLS handling internally 
+all the necessary reformulations and data conversion.</p>
+
+<p><font color="#80ffff">What is a "sum of squares optimization program"? Why 
+would I want such a thing?</font></p>
+<p>A sum of squares (SOS) program, in the simplest case, has the form:<br></p>
+<p align="center"><font face="Arial" color="#ffff80"><strong>minimize:</strong></font><font face="Arial"><strong> c_1 * 
+u_1 + ... + c_n * u_n<br><br></strong></font><font face="Arial" color="#ffff80"><strong>subject to constraints: <br></strong></font><font face="Arial"><strong><br>P_i(x) := A_i0(x) + A_i1(x) * u_1 + ... + A_in(x) * u_n 
+</strong></font></p>
+<p align="center"><font face="Arial" color="#ffff80"><strong>are sums of squares of 
+polynomials (for i=1..n)</strong></font><font face="Arial"><strong>.<br></strong></font></p>
+<p>Here, the A_ij(x) are multivariate polynomials, and the decision variables 
+u_i are scalars. This is a <strong>convex optimization problem</strong>, since 
+the objective function is linear and the set of feasible u_i is convex.</p>
+<p>While this looks quite nice, perhaps you are actually interested in more 
+concrete problems such as:</p>
+<ul>
+  <li>Constrained or unconstrained optimization of polynomial functions. 
+  </li><li>Mixed continuous-discrete optimization. 
+  </li><li>Finding Lyapunov or Bendixson-Dulac functions for nonlinear dynamical 
+  systems (with polynomial vector fields). 
+  </li><li>Deciding copositivity of a matrix. 
+  </li><li>Inequalities in probability theory. 
+  </li><li>Distinguishing separable from entangled states in quantum systems. 
+  </li><li>Or, more generally, problems that deal with basic semialgebraic sets (sets 
+  defined by polynomial equalities and inequalities).. </li></ul>
+<p>Although most of these problems are NP-hard, it turns out that useful bounds 
+(or even exact solutions) for <strong>all</strong> these problems can be found 
+by formulating them in a sum of squares optimization framework. </p>
+<p>Hopefully, by now you'll be intrigued, and a bit more inclined to think that 
+this sum of squares stuff may actually be useful to you. If interested, you'll 
+find a much more detailed explanation of the toolbox, some of the applications, 
+and the concepts behind it in the SOSTOOLS <a href="http://sysos.eng.ox.ac.uk/sostools/sostools.pdf">user's 
+guide</a>, and the <a href="http://sysos.eng.ox.ac.uk/sostools/#references">references</a> 
+below. </p>
+<hr>
+
+<h2>Distribution and release information</h2>
+<p>SOSTOOLS is freely available under the GNU license from either site:</p>
+<p>CDS at Caltech: <a href="http://www.cds.caltech.edu/sostools">http://www.cds.caltech.edu/sostools</a> 
+or</p>
+<p>LIDS at MIT: <a href="http://www.mit.edu/~parrilo/sostools">http://www.mit.edu/~parrilo/sostools&nbsp;</a>or</p>
+	<p>CSCL at ASU:
+<a href="http://control.asu.edu/sostools">[http://control.asu.edu/sostools]</a> or</p>
+<p>Control Group at Oxford: <a href="http://www.eng.ox.ac.uk/control/sostools">http://www.eng.ox.ac.uk/control/sostools</a>.</p>
+
+ 
+<br> 
+ 
+<p>Older versions:</p> 
+ 
+<ul>
+  <li> SOSTOOLS release v3.04 (20th November 2020, works with MATLAB's Symbolic MATLAB toolbox 8.5): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.304.zip">SOSTOOLS.304.zip</a> </li>
+<li>
+SOSTOOLS release v3.03 (1st April 2018, works with MATLAB's Symbolic math toolbox 8.4 and earlier): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.303.zip">SOSTOOLS.303.zip</a> </li>
+  <li>SOSTOOLS release v3.01 (1st July 2016): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.301.zip">SOSTOOLS.301.zip</a></li> 
+  <li>SOSTOOLS release v3.00 (16 Oct 2013): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.300.zip">SOSTOOLS.300.zip</a></li> 
+  <li>SOSTOOLS release v2.05 (17th Aug 2012): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.205.zip">SOSTOOLS.205.zip</a></li>  
+  <li>SOSTOOLS release v2.04 (31st Aug 2010):
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.204.zip">SOSTOOLS.204.zip</a></li>
+  <li>SOSTOOLS release v2.03 (31st May 2010): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.203.zip">SOSTOOLS.203.zip</a></li> 
+  <li>SOSTOOLS release v2.02, compatible with MATLAB 7.1 (2nd May 2006): 
+         <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.202.zip">SOSTOOLS.202.zip</a></li> 
+  <li>SOSTOOLS release v2.01 (8th Oct 2004): <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.201.zip">SOSTOOLS.201.zip</a> 
+
+  </li><li>SOSTOOLS release v2.00 (28th June 2004): <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.200.zip">SOSTOOLS.200.zip</a> 
+
+  </li><li>SOSTOOLS release v1.01, compatible with MATLAB 6.5 (4th March 2003): <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.101.zip">SOSTOOLS.101.zip</a> 
+
+  </li><li>SOSTOOLS release v1.00 (11th April 2002): <a href="http://sysos.eng.ox.ac.uk/sostools/SOSTOOLS.100.zip">SOSTOOLS.100.zip</a> 
+  </li></ul>
+
+<p>&nbsp;</p>
+<h2>System requirements</h2>
+<p>To install and run SOSTOOLS, you need:</p>
+<ul>
+  <li> <a href="http://www.mathworks.com/">MATLAB</a> version 6.0 or later. 
+  </li><li> MATLAB Symbolic Math Toolbox version 2.1.2 (optional) for SOSTOOLS versions 2.05 and earlier, or the current version of the MATLAB Symbolic Math Toolbox for SOSTOOLS version 3.00 and later. 
+  </li><li> An SDP solver, either <a href="http://sedumi.ie.lehigh.edu/">SeDuMi</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/sdpt3.html">SDPT3</a>, <a href="https://projects.coin-or.org/Csdp/">CSDP</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/SDPNAL.html">SDPNAL</a>, <a href="http://www.math.nus.edu.sg/~mattohkc/SDPNALplus.html">SDPNAL+</a>, <a href="https://github.com/oxfordcontrol/CDCS">CDCS</a>, <a href="http://sdpa.sourceforge.net/">SDPA</a> and <a href="https://www.mosek.com/">MOSEK</a>. These solvers and their documentation can be downloaded for free. For information 
+  on how to install them, you are referred to their installation 
+  instructions. </li></ul>
+<p>SOSTOOLS can easily be run on Windows or MAC OSX machines. It utilizes MATLAB sparse matrix representation for good 
+performance and to reduce the amount of memory needed.</p>
+<p>Detailed installation instructions are available in the <a href="http://sysos.eng.ox.ac.uk/sostools/sostools.pdf">SOSTOOLS 
+user's guide</a> (also included with the standard distribution).</p>
+<p>&nbsp;</p>
+<hr>
+
+<h2>Authors</h2>
+<p>The software has been written and is maintained by:</p>
+<ul>
+  <li><a href="http://sysos.eng.ox.ac.uk/control/sysos/index.php/User:Antonis">Antonis 
+  Papachristodoulou</a> 
+  </li><li><a href="http://www.columbia.edu/~ja3451/index.html">James Anderson</a> 
+  </li><li><a href="https://l2s.centralesupelec.fr/en/u/valmorbida-giorgio/">Giorgio Valmorbida</a> 
+  </li><li><a href="http://www.cds.caltech.edu/~prajna/">Stephen Prajna</a>  
+  </li><li><a href="https://controls.engin.umich.edu/profile/peter-seiler/">Peter 
+  Seiler</a> 
+  </li><li><a href="http://www.mit.edu/~parrilo">Pablo A. Parrilo</a> </li>
+  <li><a href="http://control.asu.edu/">Matthew M. Peet</a> </li>
+  <li> Declan Jagt </li>
+
+</ul>
+<a name="references">
+<h2>References</h2>
+<p>For a detailed explanation of the theory and applications of sums of squares 
+programming, as well as references to related work, please see:</p>
+</a><dir><a name="references">
+</a><li><a name="references"><b>Structured Semidefinite Programs and Semialgebraic Geometry Methods in 
+Robustness and Optimization</b><br><i>California Institute of Technology</i>, 
+Pasadena, CA, May 2000.<br></a><a href="http://www.mit.edu/~parrilo/pubs/files/Thesis_abstract.html">Abstract</a>, 
+<a href="http://www.mit.edu/~parrilo/pubs/files/thesis.ps">postscript</a>, <a href="http://www.mit.edu/~parrilo/pubs/files/thesis.ps.gz">gzipped 
+postscript</a>, <a href="http://www.mit.edu/~parrilo/pubs/files/thesis.pdf">pdf</a>. <b><br></b>
+</li><li><b>Semidefinite programming relaxations for semialgebraic 
+problems.</b><br>P. A. Parrilo,<br><a href="http://www.mit.edu/~parrilo/pubs/files/SDPrelax_abstract.html">Abstract</a>, 
+<a href="http://www.mit.edu/~parrilo/pubs/files/SDPrelaxations.ps">postscript</a>, 
+<a href="http://www.mit.edu/~parrilo/pubs/files/SDPrelaxations.ps.gz">gzipped 
+postscript</a>.<b><br></b>
+</li><li><b>Minimizing polynomial functions</b><br>P. A. Parrilo, B. Sturmfels,<br><a href="http://www.arxiv.org/abs/math.OC/0103170">http://www.arxiv.org/abs/math.OC/0103170</a><br></li></dir> For more references please see <a href="http://hot.caltech.edu/math.html">http://hot.caltech.edu/math.html</a> but also the authors' websites. 
+<p>&nbsp;</p>
+<hr>
+
+<h2>Feedback</h2>
+<p>For comments, bug reports, encouragement, suggestions, complaints, etc., 
+please send email to: <a href="mailto:sostools@cds.caltech.edu">sostools@cds.caltech.edu</a>. You can also do this on GitHub. </p>
+<p>If you use SOSTOOLS for research purposes, we'd be happy to hear about it and 
+mention it in the reference guide. Please drop us a line, to <a href="mailto:sostools@cds.caltech.edu">sostools@cds.caltech.edu</a></p>
+<p>Here's the bibtex entry, for citation:</p><pre>@manual{sostools,
+author = {A. Papachristodoulou, J. Anderson, G. Valmorbida, S. Prajna, P. Seiler, P. A. Parrilo, M. M. Peet and D. Jagt},
+title = {{SOSTOOLS}: Sum of squares optimization toolbox for {MATLAB}},
+note = {Available from \texttt{https://github.com/oxfordcontrol/SOSTOOLS}},
+year = {2021},
+address = {\texttt{http://arxiv.org/abs/1310.4716}},
+}</pre>
+<hr>
+<h2><a name="patches">Related Patches and Add-Ons</a></h2>The following are some 
+patches and add-ons written by other people: 
+<ul>
+  <li><a href="https://github.com/gvalmorbida/INTSOSTOOLS">INTSOSTOOLS</a> 
+  for formulating and solving optimization problems subject to one-dimensional
+integral inequalities.
+</li>
+  <li><a href="https://github.com/frankpermenter/frlib">frlib</a> 
+  for a pre-processing facial reduction step.
+</li>
+</ul>
+
+<!--
+<H2><A name=patches>Related Patches and Add-Ons</A></H2>The following are some 
+patches and add-ons written by other people: 
+<UL>
+  <LI><A href="http://www-noblab.ces.kyutech.ac.jp/~ichihara/">Matrix patch</A> 
+  for SOSTOOLS v1.01, written by Hiroyuki Ichihara. 
+</LI></UL>-->
+
+<br><br>
+
+ 
+</body></html>

@@ -1,0 +1,53 @@
+Major Updates:
+
+- New data structure introduced for PDE, DDE, DDF, NDS, and PIE. 
+This data structure contains all the user-assignable coefficients for the associated system types.
+
+- New term-based data format for PDEs allowing for more generality, including high-order spatial derivatives, integrals in the PDE and boundary conditions, et c. . This change will facilitate the anticipated extension to 2D PDEs anticipated in PIETOOLS 2021b or 2022a and ulitmately, to nonlinear PDEs. The old data format is referred to as batch format and there is a converter (convert_PIETOOLS_PDE_batch2terms) which converts the old batch data format to the new terms data format. Conversion of terms to batch is not possible, as the new format is more general.
+
+- All scripts in the converters folder have been converted to functions whose inputs and outputs are PDE/DDE/DDF/NDS/PIE data structures. These fiels include
+	-initialize_PIETOOLS_PDE_batch
+	-initialize_PIETOOLS_PDE_terms
+	-initialize_PIETOOLS_DDE
+	-initialize_PIETOOLS_DDF
+	-initialize_PIETOOLS_NDS
+	-convert_PIETOOLS_PDE_batch
+	-convert_PIETOOLS_PDE_terms
+	-convert_PIETOOLS_PDE_batch2terms
+	-convert_PIETOOLS_DDE2PIE
+	-convert_PIETOOLS_DDF2PIE
+	-convert_PIETOOLS_NDS2DDF
+	-minimize_PIETOOLS_DDE2DDF
+	-minimize_PIETOOLS_DDF
+	
+- All executives have been coverted to functions whose inputs are a PIE structure and a settings structure. These files include
+	-executive_PIETOOLS_Hinf_control
+	-executive_PIETOOLS_Hinf_estimator
+	-executive_PIETOOLS_Hinf_gain
+	-executive_PIETOOLS_stability_dual
+	-executive_PIETOOLS_stability
+
+- The controller and estimator functionalities have been enhanced, allowing users to determine the optimal inputs and build the closed loop system when constructing optimal controllers and observers.
+
+- A graphical user interface (GUI) has been included for term-by-term construction of PDEs. After construction of the PDE, the user may export the PDE to the workspace in the terms data format. The user may also save and load a PDE into the GUI using the gui -specific data format. Save files exist for most of the listed example PDEs.
+
+- A user manual has been created and included in the root PIETOOLS_documentation directory.
+
+- The PDE example library has been converted to a function. To obtain one of the examples, the user may call the function with an index corresponding to this particular example. The scripts
+	-PIETOOLS_PDE
+	-PIETOOLS_DDE
+	-PIETOOLS_DDF
+ have also all been updated to account for the adjustments in the executives and input formats.
+
+
+
+NEW FILES:
+
+*PIETOOLS_PDE_GUI.mlapp		(The interface for specifying PDEs
+
+- converters
+[
+* convert_PIETOOLS_NDS2DDF.m
+* initialize_PIETOOLS_NDS.m
+* minimize_PIETOOLS_DDF
+]

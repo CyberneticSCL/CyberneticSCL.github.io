@@ -1,0 +1,138 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><head>
+<title>TKL - A MATLAB Toolbox for Classification and Regression using SVMs and Tessellated Kernels</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="MSHTML 6.00.6000.16674" name=GENERATOR>
+<style type="text/css">
+body,td,th {
+    color: #552223;
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+}
+	  h2 {
+    color: #060878;
+  }
+	  h3 {
+    color: #104301;
+  }
+	  h4 {
+    color: #8F0306;
+  }
+	a:link {
+    color: #000000;
+}
+a:visited {
+    color: #000000;
+}
+a:hover {
+    color: #000000;
+}
+a:active {
+    color: #000000;
+}
+.nnn {
+    background-color: #C36B6D;
+}
+body {
+    background-color: cadetblue;
+}
+</style>
+</head>
+<!--
+	<body bgColor=#FAF3E3 text=#552223 link=#00ff00 vLink=#FEA200 alink="#80340A">
+	<header class="nnn">Content for New header Tag Goes Here</header>
+
+<p align=center>blah</p>
+-->
+<P align=center> (Page Last updated November 5, 2022) </P>
+<P align=center>
+	<IMG height=150 alt=TKL src="../TKL/TKL.png" ></P>
+<P>&nbsp;</P>
+<H4>Latest Matlab Release:  
+         <a href="https://github.com/CyberneticSCL/TKL-version-0.9">Download from Github</a> </H4>
+<UL>
+  <LI>Latest Python Implementation: <a href="https://github.com/Talitsky/PMKL">PMKL version 1.0</a>
+  <LI>Web Guide: <a href="https://talitsky.github.io/v1/">TKL version 1.0 guide</a>
+  <LI>Python Implementation Homepage: <a href="https://pypi.org/project/pyPMKL/">pyPMKL 0.1.5</a>
+</UL>
+
+	  <H4>Previous Versions:  </H4>
+	<p>TKL Version 0.9 (July 8, 2020): 
+         <a href="https://github.com/CyberneticSCL/TKL-version-0.9">TKL_V1.zip</a></p>
+
+	<UL>
+	<H2>Introduction</H2>
+<P>Tessellated Kernel Learning (TKL) is a free machine learning MATLAB toolbox for learning optimal Tessellated Kernel (TK) functions for Support Vector Machine (SVM) classification and regression problems. TKs are a class of kernel functions that are ideal for kernel learning because they admit a linear parameterization (tractability); are dense in the set of all kernels (accuracy); and every member is universal so that the hypothesis space is infinite-dimensional (scalability).
+
+	
+<H3>What can I do with TKL?</H3>
+	TKL can be used to 
+<OL>
+  <LI>Learn optimal TK kernel functions for a given set of inputs x and outputs y.
+  <LI>Train a Support Vector Machine (SVM) using the optimal TK kernel function. 
+  <LI>Outputs may be binary (classification) or real valued (regression).
+</OL>
+	  		  
+</P>
+<br> 
+ 
+
+<!--<P>&nbsp;</P>-->
+
+<HR>
+
+<H2>System requirements</H2>
+<P>To install and run TKL, you need:</P>
+<UL>
+  <LI> <A href="http://www.mathworks.com/">MATLAB</A> version 6.0 or later. 
+</UL>
+<HR>
+
+<H2>Authors</H2>
+<P>The software has been written and is maintained by:</P>
+<UL> 
+  <LI><A href="https://www.public.asu.edu/~bkcolbe1/">Brendon Colbert</A>
+  <LI><A href="mailto:atalitck@asu.edu">Aleksandr Talitckii</A>
+  <LI><A href="http://control.asu.edu">Matthew M. Peet</A>
+</UL>
+<A name=references>
+
+<HR>
+
+
+<H2>References</H2>
+<P>A Paper on the TKL Algorithm can be found here:</P>
+
+<! ############################### ARXIV 2020 ############################### >
+<p style="font-size: 14px; font-family: Optima; margin-bottom: -5px;"> B. Colbert and M. Peet </p>
+     <a style="color:Blue; font-family: Optima; font-size: 20px; margin-bottom: -25px;" href="https://arxiv.org/abs/2006.07693">A New Algorithm for Tessellated Kernel Learning.</a>
+<p style="font-size: 14px; font-family: Optima;  margin-top: -3px;">     Arxiv Preprint. 2020. </p>
+
+<P>More Information on TK kernel functions can be found here:</P>
+
+<! ############################### JMLR 2020 ############################### >
+<p style="font-size: 14px; font-family: Optima; margin-bottom: -5px;"> B. Colbert and M. Peet </p>
+     <a style="color:Blue; font-family: Optima; font-size: 20px; margin-bottom: -25px;" href="http://control.asu.edu/Publications/2020/Colbert_JMLR_2020.pdf">A Convex Parametrization of a New Class of Universal Kernel Functions for use in Kernel Learning.</a>
+<p style="font-size: 14px; font-family: Optima;  margin-top: -3px;">     Journal of Machine Learning Research. Vol. 21, No. 45, 2020. </p>
+
+<! ############################### CDC 2019 ############################### >
+<p style="font-size: 14px; font-family: Optima; margin-bottom: -5px;"> B. Colbert and M. Peet </p>
+     <a style="color:Blue; font-family: Optima; font-size: 20px; margin-bottom: -25px;" href="../Publications/2019/Colbert_CDC_2019.pdf">Using SDP to Parameterize Universal Kernel Functions.</a>
+<p style="font-size: 14px; font-family: Optima;  margin-top: -3px;"> IEEE Conference on Decision and Control, 2019. </p>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->			
+
+<HR>
+
+<H2>Technical Support</H2>
+
+	<P>Our goal is to make use of TKL as simple as humanly possible. However, our background is not in coding and sometimes we come up short. If you are having a serious technical issue and neither the help commands nor the manual are helping, and believe there is a bug in the program, please report it to: <A style="color:Blue;" href="mailto:atalitck@asu.edu"><span class="s2">atalitck@asu.edu</span></A>. If there is a bug, we will add it to the known bug list and do our best to fix it.</P>
+
+	<P>Alternatively, if you would like to volunteer for the TKL development team, we would be happy to include you (no compensation -  Sorry). Send an email to <A 
+href="mailto:mpeet@asu.edu">mpeet@asu.edu</A> </P>
+
+
+<BR><BR>
+
+</BODY></HTML> 
+

@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Our Wedding</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="keywords" content="Enter, Keywords, Here">
+<meta name="description" content="Enter a brief description here">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFCC" onLoad="MM_preloadImages('../images/cere_on.gif','#925656549566');MM_preloadImages('../images/party_on.gif','#925656587500');MM_preloadImages('../images/direct_on.gif','#925656611333');MM_preloadImages('../images/guest_on.gif','#925656638816')" link="#006666" vlink="#333300" alink="#006666" background="../images/background.gif">
+<!-- #BeginEditable "Heading%20/%20Navigation" --> 
+<table width="350" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr> 
+    <td colspan="2"><img src="../images/wedding1.gif" width="406" height="66" alt="Our Wedding" border="0"></td>
+  </tr>
+  <tr> 
+    <td width="362"><!-- #BeginLibraryItem "/Library/Navigation.lbi" --><a href="../ceremony.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('ceremony','','../images/cere_on.gif',1)"><img name="ceremony" border="0" src="../images/cere_off.gif" alt="The Ceremony" width="127" height="17"></a><a href="../party.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('party','','../images/party_on.gif',1)"><img name="party" border="0" src="../images/party_off.gif" alt="The Parties" width="80" height="17"></a><a href="../direct.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('directions','','../images/direct_on.gif',1)"><img name="directions" border="0" src="../images/direct_off.gif" alt="Directions" width="73" height="17"></a><a href="../gbook.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('guestbook','','../images/guest_on.gif',1)"><img name="guestbook" border="0" src="../images/guest_off.gif" alt="Guestbook" width="78" height="17"></a><!-- #EndLibraryItem --></td>
+    <td width="48"><img src="../images/wedding2.gif" alt="G" border="0" width="48" height="17"></td>
+  </tr>
+</table>
+<!-- #EndEditable --> <!-- #BeginEditable "content" --> 
+<table width="406" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td valign="top" colspan="3" width="406"> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#666600"><b><img src="../images/spacer.gif" border="0" width="406" height="10"><br>
+        </b></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#666600"><b>Introduction 
+        Text</b></font> </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="190" valign="top"> 
+      <div align="right"><img src="../images/smallempty.gif" width="176" height="179"></div>
+    </td>
+    <td valign="top" width="10"><img src="../images/spacer.gif" width="10" height="10" border="0" alt="spacer"></td>
+    <td width="190" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#666600"><b>Heading</b></font><br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2">Body Text</font></td>
+  </tr>
+  <tr> 
+    <td width="190" valign="middle"> 
+      <p align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#666600"><b>Heading</b></font><br>
+        <font face="Verdana, Arial, Helvetica, sans-serif" size="2">Body Text</font></p>
+    </td>
+    <td valign="top" width="10">&nbsp;</td>
+    <td width="190" valign="middle"><img src="../images/smallempty.gif" width="176" height="179"></td>
+  </tr>
+  <tr> 
+    <td width="190" valign="middle">&nbsp;</td>
+    <td valign="top" width="10">&nbsp;</td>
+    <td width="190" valign="middle"> 
+      <div align="center"><!-- #BeginLibraryItem "/Library/text navigation.lbi" -->
+<div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+  <a href="../ceremony.htm">The Ceremony</a> </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">|</font></font> 
+  <font face="Verdana, Arial, Helvetica, sans-serif" size="1"><a href="../party.htm">The 
+  Parties</a> <br>
+  <a href="../direct.htm">Directions</a> | <a href="../gbook.htm">Guestbook</a></font><font color="#666600" size="3"> 
+  </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">| 
+  <a href="../index.htm">Home</a></font></font><font color="#666600" size="3"> 
+  </font></font></div>
+<!-- #EndLibraryItem --></div>
+    </td>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+</body>
+</html>
