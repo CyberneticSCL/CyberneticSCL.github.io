@@ -1,5 +1,3 @@
-RewriteEngine on
-# the following line temporarily redirects "control.asu.edu/pietools" page to the actual location "control.asu.edu/pietools/pietools"; R tag is temporary, for permanent redirect use [R=301]
-RewriteRule "^/pietools$" "/pietools/pietools" [R]
-# the following line temporarily redirects "control.asu.edu/sostools" page to the actual location "control.asu.edu/sostools/sostools"; R tag is temporary, for permanent redirect use [R=301]
-RewriteRule "^/sostools$" "/sostools/sostools" [R]
+# the following line redirects "control.asu.edu/pietools" page to the actual location "control.asu.edu/pietools/pietools"; R tag is permanent, for temporary redirect use 302; Likewise the second line does the same for sostools
+Redirect 301 "/pietools" "/pietools/pietools.html"
+Redirect 301 "/sostools" "/sostools/sostools.html" 
