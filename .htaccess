@@ -1,0 +1,5 @@
+RewriteEngine on
+# the following line temporarily redirects "control.asu.edu/pietools" page to the actual location "control.asu.edu/pietools/pietools"; R tag is temporary, for permanent redirect use [R=301]
+RewriteRule "^/pietools$" "/pietools/pietools" [R]
+# the following line temporarily redirects "control.asu.edu/sostools" page to the actual location "control.asu.edu/sostools/sostools"; R tag is temporary, for permanent redirect use [R=301]
+RewriteRule "^/sostools$" "/sostools/sostools" [R]
