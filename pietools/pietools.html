@@ -53,21 +53,21 @@ body {
 
 <p align=center>blah</p>
 -->
-<P align=center> (Page Last updated May 26, 2023) </P>
+<P align=center> (Page Last updated Dec. 31, 2024) </P>
 <P align=center>
 	<IMG height=150 alt=PIETOOLS src="PIETOOLS_logo_3_tb.png" ></P>
 <P>&nbsp;</P>
-<H4>Latest Release: PIETOOLS 2022 (Dec. 31, 2022): 
+<H4>Latest Release: PIETOOLS 2024 (Dec. 31, 2024): 
 <a href="https://github.com/CyberneticSCL/PIETOOLS">Download from Github</a> </H4>
 <UL>
-  <LI>Zip File: <a href="PIETOOLS_2022.zip">PIETOOLS_2022.zip</a>
-  <LI>User Manual: <a href="PIETOOLS_2022_User_Manual.pdf">PIETOOLS 2022 User Manual</a>
-  <LI>Release Notes: <a href="Release_Notes_PIETOOLS_2022.txt">Release Notes for PIETOOLS 2022</a>
+  <LI>Zip File: <a href="PIETOOLS_2024.zip">PIETOOLS_2024.zip</a>
+  <LI>User Manual: <a href="PIETOOLS_2024_User_Manual.pdf">PIETOOLS 2024 User Manual</a>
+  <LI>Release Notes: <a href="Release_Notes_PIETOOLS_2024.txt">Release Notes for PIETOOLS 2024</a>
 </UL>
 
 		<H4>PIETOOLS can also be downloaded and installed using the following Matlab script: <a href="pietools_update.m">pietools_update.m</a> </H4>
 <UL>
-  <LI>Downloads and Installs: PIETOOLS 2022; sedumi; SOSTOOLS v4.00
+  <LI>Downloads and Installs: PIETOOLS 2024; sedumi; SOSTOOLS v4.00
 	  </UL>
 
 	
@@ -79,6 +79,9 @@ body {
 	<p>PIETOOLS 2021b (December 30, 2021): 
       <a href="PIETOOLS_2021b.zip">PIETOOLS_2021b.zip</a>  <a href="Release_Notes_PIETOOLS_2021b.txt"> Release Notes</a>  
 		<a href="PIETOOLS_2021b_User_Manual.pdf"> User Manual </a> </p>
+	<p>PIETOOLS 2022 (December 31, 2022): 
+      <a href="PIETOOLS_2022.zip">PIETOOLS_2022.zip</a>  <a href="Release_Notes_PIETOOLS_2022.txt">2022 Release Notes</a>  
+		<a href="PIETOOLS_2022_User_Manual.pdf">2022 User Manual</a> </p>
 
 	<H2>Introduction</H2>
 <P>PIETOOLS is a free MATLAB toolbox for formulating 
@@ -103,9 +106,10 @@ be used to define 3-PI or 4-PI operators, declare 3-PI or 4-PI operators variabl
 	<p>Now, you may be wondering if you are going to lose anything by switching your PDE/DDE/DDF to a PIE. No! That would be awful. You may have been hurt in the past by people wrecking your lovely PDE/DDE/DDF using such barbaric tools as approximation via discretization, projection, mollification, regularization or Pade. However, let us assure you that using PIEs is completely safe. The PIE representation of a PDE/DDE/DDF is exact. The solutions are one-to-one, only the tools used for representation have improved. </p>
 
 	<H3>What if I don't like PIE?</H3>
-	Everyone likes PIE! But really, that's cool. If you are into the retro vibe, there are still lots of fun things you can do with PIETOOLS, like declaring PDEs, DDEs, and DDFs; converting between representations, finding minimal representations, and playing with integral inequalities. PIETOOLS is open-source, so feel free to use it as an interface to your own software. Just send us a link if you do, so we can recognize you on the website. Here's a list of PIETOOLS functionality which doesn't involve PIE at all:
+	Everyone likes PIE! But really, that's cool. If you are into the retro vibe, there are still lots of fun things you can do with PIETOOLS, like: declaring and simulating PDEs, DDEs, and DDFs; converting between representations; finding minimal representations; and playing with integral inequalities. PIETOOLS is open-source, so feel free to use it as an interface to your own software. Just send us a link if you do, so we can recognize you on the website. Here's a list of PIETOOLS functionality which doesn't involve PIE at all:
 <OL>
   <LI>Use the GUI (Requires Matlab 2021) to construct and export a PDE data structure.
+  <LI>Simulate a 1D or 2D PDE.
   <LI>Convert a DDE or a Neutral Type System (NDS) to a DDF.
   <LI>Find a minimal/low-dimensional realization of a DDF.
   <LI>Find optimal bounds for integral inequalities.
@@ -120,7 +124,7 @@ be used to define 3-PI or 4-PI operators, declare 3-PI or 4-PI operators variabl
   <LI>Solving LPIs for Analysis and Control of PIEs.
   <LI>Numerically simulate a PIE or PDE.
 </OL>
-	  	<H3>1. Manipulation of 3/4-PI operators</H3>
+	  	<H3>1. Manipulation of 3/4-PI operators (Chapters 3 and 10 in User Manual)</H3>
 The opvar class allows you to define and examine 3-PI and 4-PI operators. Most Matlab operations which are valid for matrices are also valid for 3/4-PI operators.
 <UL>
   <LI>Composition/Multiplication (T1*T2).
@@ -130,35 +134,32 @@ The opvar class allows you to define and examine 3-PI and 4-PI operators. Most M
   <LI>Inversion of 3/4-PI operators.
 </UL>
 	  
-	  	<H3>2. Construct and Solve LPIs</H3>
+	  	<H3>2. Construct and Solve LPIs (Chapter 7 in User Manual)</H3>
 Inspired by the YALMIP syntax for constructing and solving LMIs, PIETOOLS allows the user to declare and then manipulate 3/4-PI decision variables as they would any other 3/4-PI object. The user may also add equality and inequality constraints on these 3/4-PI objects, where positivity is defined with respect to the L2 inner product. Construction of almost any LPI can be accomplished using a combination of the following four commands:
 <UL>
   <LI>Declare a 3/4-PI variable (T1=lpivar).
   <LI>Declare a positive semidefinite 3/4-PI variable (T2=poslpivar).
-  <LI>Declare and equality constraints (T1=T2 -> opeq(T1-T2)).
-  <LI>Declare an inequality constraints (T1>T2 -> opineq(T1-T2)).
+  <LI>Declare and equality constraints (T1=T2 -> lpieq(T1-T2)).
+  <LI>Declare an inequality constraints (T1>T2 -> lpiineq(T1-T2)).
 </UL>
 	  
-	  	<H3>3. Converting PDEs/DDEs/DDFs to PIEs</H3>
-PIETOOLS currently includes several user-friendly functions for converting a very broad class of PDEs/DDEs/DDFs to PIEs. The header to each script describes the input format for each application, using as nearly universal a formulation as possible. The 3 scripts are:
+	  	<H3>3. Constructing and Converting PDEs/DDEs/DDFs to PIEs (Chapters 4 and 5 in User Manual)</H3>
+PIETOOLS currently includes a convenient command-line interface for constructing almost any linear PDE/DDE/DDF and adding boundary conditions. There are also GUI and batch interfaces if that is your thing. Once you have constructed a PDE object, conversion to a PIE is simply `pie=convert(pde)'. You can also construct PIEs directly using `piess(T,A,B,C,D)' or close the loop on 2 PIE objects using `pielft(pie1,pie2)'.  Some other fun features include
 <UL>
-  <LI>A Graphical User Interface (Requires Matlab 2021) for defining PDEs and converting them to PIES.	
-  <LI>Convert a PDE (in 1 spatial variable) to a PIE (convert_PIETOOLS_PDE2PIE_batch).
-  <LI>Convert a DDE to a minimal DDF representation (minimize_PIETOOLS_DDE2DDF).
-  <LI>Convert a Neutral Delay System (NDS) to a DDF representation (convert_PIETOOLS_NDS2DDF).
-  <LI>Construct a minimal DDF representation of a DDF (minimize_PIETOOLS_DDF).
-  <LI>Convert a DDF to a PIE (convert_PIETOOLS_DDF2PIE).
+  <LI>You can construct PIEs directly using `piess(T,A,B,C,D)'.
+  <LI>You can close the loop on 2 PIE objects using `pielft(pie1,pie2)'.
 </UL>
-	  	<H3>4. Scripts for Analysis and Control of PIEs</H3>
+	  	<H3>4. Analysis, Control and Simulation of PIEs (Chapters 6, 7.7 and 13 in User Manual)</H3>
 	  
-	The list of LPIs for analysis and control of PIEs is constantly expanding. However, PIETOOLS comes with several pre-defined functions for analysis and control of PIEs using LPIs. Examples of these functions include:
+	The list of LPIs for analysis and control of PIEs is constantly expanding. However, PIETOOLS comes with several pre-defined functions for analysis and control of PIEs using LPIs. These can be executed using `lpiscript'. Examples of these functions include:
 <UL>
-  <LI>Analyze stability of a PIE (PIETOOLS_stability).
-  <LI>Compute the H_inf system norm of a PIE (PIETOOLS_Hinf_gain).
-  <LI>Design an optimal observer/state-estimator for a PIE (PIETOOLS_Hinf_estimator).
-  <LI>Design an optimal state-feedback controller for a PIE (PIETOOLS_Hinf_control).
+  <LI>Analyze stability of a PIE (lpiscript(PIE,`stability')).
+  <LI>Compute the H_inf system norm of a PIE (lpiscript(PIE,`l2gain').
+  <LI>Design an optimal observer/state-estimator for a PIE (lpiscript(PIE,`hinf-observer').
+  <LI>Design an optimal state-feedback controller for a PIE (lpiscript(PIE,`hinf-controller').
+  <LI>Simulate a PIE (PIESIM(PIE)).
 </UL>
-<!--
+
 <H3>5. Numerical Simulation of PIEs, PDEs, and DDEs</H3>
 	  
 	The PIE representation allows for numerical simulation of PDEs and DDEs without the bother of enforcing boundary conditions and continuity constraints. Tools for numerical simulation are still being improved and expanded, but current basic functionality includes:
@@ -166,8 +167,8 @@ PIETOOLS currently includes several user-friendly functions for converting a ver
   <LI>Simulation of a PIE with specified initial conditions and forcing functions/disturbances (PIESIM).
   <LI>Reconstruction of a PDE solution from solution of the PIE (PIEsol2PDEsol).
 </UL>
--->
-<H3>For a Complete List of Files Included with PIETOOLS, see our: <a href="Readme.m">Readme.m File</a></H3>
+
+	  <H3>For a Complete List of Files Included with PIETOOLS, see the user manual</a></H3>
 
 	  
 	  </P>
